@@ -30,7 +30,7 @@ with new_recording_tab:
             st.audio(wav_audio_data, format='audio/wav')
         st.write("Please enter your child's age:")
         age_year_new = st.selectbox(label="Years:", options=("4", "5", "6", "7", "8", "9", "10", "11"))
-        age_month_new = st.selectbox(label="Months:", options=("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+        age_month_new = st.selectbox(label="Months:", options=("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
         submission_new = st.form_submit_button("Submit and Run Screening")
         if submission_new == True:
             # logic goes here for processing speech sample
