@@ -20,6 +20,7 @@ with pre_recorded_tab:
         submission = st.form_submit_button("Submit and Run Screening")
         if submission == True:
             # logic goes here for processing speech sample
+            st.error('speech screening functionality in progress')
 
 with new_recording_tab:
     new_recording_form = st.form('Make and Upload a Speech Sample')
@@ -33,6 +34,7 @@ with new_recording_tab:
         submission_new = st.form_submit_button("Submit and Run Screening")
         if submission_new == True:
             # logic goes here for processing speech sample
+            st.error('speech screening functionality in progress')
 
 
 
