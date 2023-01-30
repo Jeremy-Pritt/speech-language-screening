@@ -16,7 +16,7 @@ with pre_recorded_tab:
         speech_sample = st.file_uploader("Please upload an audio file of your child\'s speech:")
         st.write("Please enter your child's age:")
         age_year = st.selectbox(label="Years:", options=("4", "5", "6", "7", "8", "9", "10", "11"))
-        age_month = st.selectbox(label="Months:", options=("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+        age_month = st.selectbox(label="Months:", options=("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
         submission = st.form_submit_button("Submit and Run Screening")
         if submission == True:
             # logic goes here for processing speech sample
