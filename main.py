@@ -27,9 +27,10 @@ with pre_recorded_tab:
         if submission == True:
             # logic goes here for processing speech sample
 
-            audio_seg = upload_and_save_wavefiles(speech_sample)
+            samples, sr = upload_and_save_wavefiles(speech_sample)
 
-            st.success(audio_seg)
+            st.success(samples)
+            st.success(sr)
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
@@ -49,5 +50,4 @@ with new_recording_tab:
         submission_new = st.form_submit_button("Submit and Run Screening")
         if submission_new == True:
             # logic goes here for processing speech sample
-            audio_seg_bytes = speech_sample_new
-            st.success(audio_seg_bytes)
+            st.error("microphone functionality in progress")
