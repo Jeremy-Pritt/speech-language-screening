@@ -29,7 +29,7 @@ with pre_recorded_tab:
 
             audio = upload_and_save_wavefiles(speech_sample)
 
-            st.success("audio:", audio)
+            st.success(audio)
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
