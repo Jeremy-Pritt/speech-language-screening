@@ -3,4 +3,4 @@ numpy~=1.23.3
 streamlit~=1.13.0
 audio2numpy~=0.1.2
 pydub
-ffprobe
+avconv
