@@ -1,5 +1,6 @@
 import pydub
 from pathlib import Path
+import ffprobe
 
 
 def upload_and_save_wavefiles(uploaded_file):
