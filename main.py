@@ -1,9 +1,5 @@
-import pandas as pd
-import numpy as np
 import streamlit as st
 from st_custom_components import st_audiorec
-from read_mp3 import read_mp3
-import os
 from process_audio import process_audio
 
 
@@ -29,10 +25,9 @@ with pre_recorded_tab:
             samples_arry, sampling_rate = process_audio(speech_sample)
             st.success(samples_arry)
             st.success(sampling_rate)
-            # signal, sampling_rate = read_mp3(speech_sample)
-            #
-            # st.success('signal:', signal)
-            # st.success("sampling_rate:", sampling_rate)
+
+
+
 
 with new_recording_tab:
     new_recording_form = st.form('Make and Upload a Speech Sample')
