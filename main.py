@@ -49,5 +49,5 @@ with new_recording_tab:
         submission_new = st.form_submit_button("Submit and Run Screening")
         if submission_new == True:
             # logic goes here for processing speech sample
-            audio_seg = upload_and_save_wavefiles(speech_sample_new)
-            st.success(audio_seg)
+            audio_seg_bytes = speech_sample_new
+            st.success(audio_seg_bytes)
