@@ -4,7 +4,7 @@ import streamlit as st
 from st_custom_components import st_audiorec
 from read_mp3 import read_mp3
 import os
-from upload_and_save_wavefiles import upload_and_save_wavefiles
+from process_audio import process_audio
 
 
 st.title("Speech-Language Screening")
@@ -26,11 +26,9 @@ with pre_recorded_tab:
         submission = st.form_submit_button("Submit and Run Screening")
         if submission == True:
             # logic goes here for processing speech sample
-
-            samples, sr = upload_and_save_wavefiles(speech_sample)
-
-            st.success(samples)
-            st.success(sr)
+            samples_arry, sampling_rate = process_audio(speech_sample)
+            st.success(samples_arry)
+            st.success(sampling_rate)
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
