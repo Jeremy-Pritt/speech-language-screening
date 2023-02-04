@@ -4,6 +4,7 @@ import streamlit as st
 from st_custom_components import st_audiorec
 from read_mp3 import read_mp3
 import os
+from upload_and_save_wavefiles import upload_and_save_wavefiles
 
 
 st.title("Speech-Language Screening")
@@ -16,7 +17,7 @@ with pre_recorded_tab:
     pre_recorded_form = st.form("Upload a Speech Sample")
     with pre_recorded_form:
         speech_sample = st.file_uploader(
-            "Please upload an audio file of your child\'s speech:")
+            "Please upload an audio file of your child\'s speech:", type=['wav', 'mp3'], accept_multiple_files=False)
         st.write("Please enter your child's age:")
         age_year = st.selectbox(label="Years:", options=(
             "4", "5", "6", "7", "8", "9", "10", "11"))
@@ -25,7 +26,10 @@ with pre_recorded_tab:
         submission = st.form_submit_button("Submit and Run Screening")
         if submission == True:
             # logic goes here for processing speech sample
-            st.success(type(speech_sample))
+
+            audio = upload_and_save_wavefiles(speech_sample)
+
+            st.success("audio:", audio)
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
