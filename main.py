@@ -25,9 +25,7 @@ with pre_recorded_tab:
         submission = st.form_submit_button("Submit and Run Screening")
         if submission == True:
             # logic goes here for processing speech sample
-            root, ext = os.path.splitext(speech_sample)
-            st.success("ext:", ext)
-            st.success("root:", root)
+            st.success(type(speech_sample))
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
