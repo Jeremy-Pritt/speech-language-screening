@@ -27,9 +27,9 @@ with pre_recorded_tab:
         if submission == True:
             # logic goes here for processing speech sample
 
-            audio = upload_and_save_wavefiles(speech_sample)
+            audio_seg = upload_and_save_wavefiles(speech_sample)
 
-            st.success(audio)
+            st.success(audio_seg)
             # signal, sampling_rate = read_mp3(speech_sample)
             #
             # st.success('signal:', signal)
@@ -38,9 +38,9 @@ with pre_recorded_tab:
 with new_recording_tab:
     new_recording_form = st.form('Make and Upload a Speech Sample')
     with new_recording_form:
-        wav_audio_data = st_audiorec()
-        if wav_audio_data is not None:
-            st.audio(wav_audio_data, format='audio/wav')
+        speech_sample_new = st_audiorec()
+        if speech_sample_new is not None:
+            st.audio(speech_sample_new, format='audio/wav')
         st.write("Please enter your child's age:")
         age_year_new = st.selectbox(label="Years:", options=(
             "4", "5", "6", "7", "8", "9", "10", "11"))
@@ -49,6 +49,5 @@ with new_recording_tab:
         submission_new = st.form_submit_button("Submit and Run Screening")
         if submission_new == True:
             # logic goes here for processing speech sample
-            signal, sampling_rate = read_mp3(speech_sample)
-            st.success('signal:', signal)
-            st.success("sampling_rate:", sampling_rate)
+            audio_seg = upload_and_save_wavefiles(speech_sample)
+            st.success(audio_seg)
