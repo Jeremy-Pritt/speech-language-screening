@@ -1,7 +1,8 @@
 import pydub
 from pathlib import Path
 
-def upload_and_save_wavefiles(uploaded_file, save_dir: str) -> list[Path]:
+
+def upload_and_save_wavefiles(uploaded_file):
     """ limited 200MB, you could increase by `streamlit run foo.py --server.maxUploadSize=1024` """
     if uploaded_file is not None:
         if uploaded_file.name.endswith('wav'):
