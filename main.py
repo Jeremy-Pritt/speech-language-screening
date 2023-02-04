@@ -1,6 +1,7 @@
 import streamlit as st
 from st_custom_components import st_audiorec
 from process_audio import process_audio
+from whisper_predict_transcription import whisper_predict_transcription
 
 
 st.title("Speech-Language Screening")
@@ -25,6 +26,8 @@ with pre_recorded_tab:
             samples_arry, sampling_rate = process_audio(speech_sample)
             st.success(samples_arry)
             st.success(sampling_rate)
+            transcription = whisper_predict_transcription()
+            st.success(transcription)
 
 
 

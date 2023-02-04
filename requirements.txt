@@ -2,4 +2,5 @@ pandas~=1.5.0
 numpy~=1.23.3
 streamlit~=1.13.0
 audio2numpy~=0.1.2
-pydub
+pydub~=0.25.1
+transformers~=4.26.0
