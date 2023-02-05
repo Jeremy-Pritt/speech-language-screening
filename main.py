@@ -2,7 +2,6 @@ import streamlit as st
 from st_custom_components import st_audiorec
 from process_audio import process_audio
 from whisper_predict_transcription import whisper_predict_transcription
-from convert_sound_bytes import convert_sound_bytes
 
 
 st.title("Speech-Language Screening")
@@ -37,7 +36,6 @@ with mic_recording_tab:
     mic_recording_form = st.form('Make and Upload a Speech Sample')
     with mic_recording_form:
         submission_mic = st_audiorec()
-        samples_arry_mic, sampling_rate_mic = convert_sound_bytes(submission_mic)
         st.write("Please enter your child's age:")
         age_year_mic = st.selectbox(label="Years:", options=(
             "4", "5", "6", "7", "8", "9", "10", "11"))
@@ -48,6 +46,7 @@ with mic_recording_tab:
             # logic goes here for processing speech sample
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
+            samples_arry_mic, sampling_rate_mic = process_audio("mic_file.wav")
             st.success(type(samples_arry_mic))
             st.success(samples_arry_mic)
             st.success(sampling_rate_mic)
