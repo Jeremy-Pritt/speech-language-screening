@@ -8,6 +8,7 @@ def whisper_predict_transcription(samples_array, sampling_rate):
         model="openai/whisper-tiny",
         chunk_length_s=180,
         device=device,
+        max_new_tokens=10000
     )
     sample = {}
     sample['array'] = samples_array
