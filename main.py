@@ -26,7 +26,7 @@ with pre_recorded_tab:
             samples_arry, sampling_rate = process_audio(speech_sample)
             st.success(samples_arry)
             st.success(sampling_rate)
-            transcription = whisper_predict_transcription()
+            transcription = whisper_predict_transcription(samples_arry, sampling_rate)
             st.success(transcription)
 
 
