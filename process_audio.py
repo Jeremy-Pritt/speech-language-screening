@@ -1,4 +1,5 @@
-import librosa
+import pydub
+import numpy as np
 
 
 def process_audio(uploaded_file):
@@ -10,8 +11,14 @@ def process_audio(uploaded_file):
     """
     if uploaded_file is not None:
         if uploaded_file.name.endswith('wav'):
-            samples_arry, sr = librosa.load(uploaded_file, sr=16000)
+            audio = pydub.AudioSegment.from_wav(uploaded_file)
+            audio = audio.set_frame_rate(16000)
+            samples_arry = np.array(audio.get_array_of_samples())
+            sr = audio.frame_rate
             return samples_arry, sr
         elif uploaded_file.name.endswith('mp3'):
-            samples_arry, sr = librosa.load(uploaded_file, sr=16000)
+            audio = pydub.AudioSegment.from_mp3(uploaded_file)
+            audio = audio.set_frame_rate(16000)
+            samples_arry = np.array(audio.get_array_of_samples())
+            sr = audio.frame_rate
             return samples_arry, sr
