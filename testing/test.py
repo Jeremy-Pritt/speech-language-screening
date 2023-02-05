@@ -16,7 +16,11 @@ predicted_ids = model.generate(input_features)
 # decode token ids to text
 transcription = processor.batch_decode(predicted_ids, skip_special_tokens=False)
 
+
 print("start")
+print()
+print(sample["array"])
+print()
 print(input_features)
 print()
 print(type(input_features))

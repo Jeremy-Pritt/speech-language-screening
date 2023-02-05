@@ -24,7 +24,7 @@ with pre_recorded_tab:
         if submission == True:
             # logic goes here for processing speech sample
             samples_arry, sampling_rate = process_audio(speech_sample)
-            st.success(samples_arry)
+            st.success(max(samples_arry))
             st.success(sampling_rate)
             st.success(samples_arry.shape)
             st.success(len(samples_arry))
