@@ -48,6 +48,6 @@ with mic_recording_tab:
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
             # samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
-            st.success(type(submission_mic))
-            st.success(submission_mic)
+            st.success(type(speech_sample_mic))
+            st.success(speech_sample_mic)
 
