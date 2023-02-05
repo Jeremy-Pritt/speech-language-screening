@@ -12,7 +12,7 @@ def process_audio(uploaded_file):
     if uploaded_file is not None:
         if uploaded_file.name.endswith('wav'):
             audio = pydub.AudioSegment.from_wav(uploaded_file)
-            audio = audio.set_frame_rate(16000)
+            #audio = audio.set_frame_rate(16000)
             samples_arry = np.array(audio.get_array_of_samples())
             sr = audio.frame_rate
             return samples_arry, sr
