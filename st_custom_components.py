@@ -29,10 +29,7 @@ def st_audiorec():
             stream = io.BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
             # wav_bytes contains audio data in byte format, ready to be processed further
             wav_bytes = stream.read()
-            with open('mic_file.wav', mode='bx', Access_Mode='w') as f:
-                f.write(wav_bytes)
 
     return wav_bytes
-
 
 

@@ -47,11 +47,7 @@ with mic_recording_tab:
             uploaded_file = "mic_file.wav"
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
-            samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
-            st.success(type(samples_arry_mic))
-            st.success(samples_arry_mic)
-            st.success(sampling_rate_mic)
-            st.success("Speech Sample Successfully Processed")
-            transcription = whisper_predict_transcription(samples_arry, sampling_rate)
-            st.success("Transcription Successfully Processed:")
-            st.success(transcription)
+            # samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
+            st.success(type(submission_mic))
+            st.success(submission_mic)
+
