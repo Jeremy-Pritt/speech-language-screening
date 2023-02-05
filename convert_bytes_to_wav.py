@@ -1,11 +1,8 @@
-import wave
+import io
+from pydub import AudioSegment
 
 def convert_bytes_to_wav(raw_sound):
-    with open(raw_sound, "rb") as inp_f:
-        data = inp_f.read()
-        with wave.open("mic_input.wav", "wb") as out_f:
-            out_f.setnchannels(1)
-            out_f.setsampwidth(2) # number of bytes
-            out_f.setframerate(16000)
-            out_f.writeframesraw(data)
-    return None
+    s = io.BytesIO(raw_sound)
+    filename = "mic_input.wav"
+    audio = AudioSegment.from_raw(s).export(filename, format='wav')
+    return audio
