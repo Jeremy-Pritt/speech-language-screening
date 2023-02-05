@@ -6,7 +6,7 @@ from whisper_predict_transcription import whisper_predict_transcription
 
 st.title("Speech-Language Screening")
 
-tabs = st.tabs(["Upload Recording", "Make a New Recording"])
+tabs = st.tabs(["Upload Recording", "Use Microphone"])
 pre_recorded_tab = tabs[0]
 mic_recording_tab = tabs[1]
 
@@ -35,9 +35,7 @@ with pre_recorded_tab:
 with mic_recording_tab:
     mic_recording_form = st.form('Make and Upload a Speech Sample')
     with mic_recording_form:
-        speech_sample_mic = st_audiorec()
-        if speech_sample_mic is not None:
-            st.audio(speech_sample_mic, format='audio/wav')
+        samples_arry_mic, sampling_rate_mic = st_audiorec()
         st.write("Please enter your child's age:")
         age_year_mic = st.selectbox(label="Years:", options=(
             "4", "5", "6", "7", "8", "9", "10", "11"))
@@ -48,8 +46,9 @@ with mic_recording_tab:
             # logic goes here for processing speech sample
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
-            st.success(type(speech_sample_mic))
-            samples_arry_mic, sampling_rate_mic = process_audio(speech_sample)
+            st.success(type(samples_arry_mic))
+            st.success(samples_arry_mic)
+            st.success(sampling_rate_mic)
             st.success("Speech Sample Successfully Processed")
             transcription = whisper_predict_transcription(samples_arry, sampling_rate)
             st.success("Transcription Successfully Processed:")
