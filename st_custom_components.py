@@ -30,6 +30,6 @@ def st_audiorec():
             # wav_bytes contains audio data in byte format, ready to be processed further
             wav_bytes = stream.read()
 
-    return raw_audio_data
+    return wav_bytes
 
 
