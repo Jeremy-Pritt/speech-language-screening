@@ -18,7 +18,7 @@ def process_audio(uploaded_file):
             output_file = 'result.wav'
             sound = AudioSegment.from_mp3(uploaded_file)
             sound.export(output_file, format="wav")
-            x, sr = librosa.load(uploaded_file, sr=16000)
+            x, sr = librosa.load(output_file, sr=16000)
             samples_arry = np.array(x)
             return samples_arry, sr
 
