@@ -35,7 +35,7 @@ with pre_recorded_tab:
 with mic_recording_tab:
     mic_recording_form = st.form('Make and Upload a Speech Sample')
     with mic_recording_form:
-        submission_mic = st_audiorec()
+        speech_sample_mic = st_audiorec()
         st.write("Please enter your child's age:")
         age_year_mic = st.selectbox(label="Years:", options=(
             "4", "5", "6", "7", "8", "9", "10", "11"))
