@@ -44,9 +44,10 @@ with mic_recording_tab:
         submission_mic = st.form_submit_button("Submit and Run Screening")
         if submission_mic == True:
             # logic goes here for processing speech sample
+            uploaded_file = "mic_file.wav"
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
-            samples_arry_mic, sampling_rate_mic = process_audio("mic_file.wav")
+            samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
             st.success(type(samples_arry_mic))
             st.success(samples_arry_mic)
             st.success(sampling_rate_mic)
