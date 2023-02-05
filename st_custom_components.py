@@ -32,7 +32,7 @@ def st_audiorec():
             wav_bytes = stream.read()
             samples_arry, sr = sf.read(io.BytesIO(wav_bytes))
 
-    return samples_arry
+    return samples_arry, sr
 
 
 
