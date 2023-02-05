@@ -44,12 +44,11 @@ with mic_recording_tab:
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
         submission_mic = st.form_submit_button("Submit and Run Screening")
         if submission_mic == True:
-
             mic_input = convert_bytes_to_wav(speech_sample_mic)
             samples_arry_mic, sampling_rate_mic = process_audio(mic_input)
             # samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
             st.success("Speech Sample Successfully Processed")
-            transcription = whisper_predict_transcription(samples_arry, sampling_rate)
+            transcription = whisper_predict_transcription(samples_arry_mic, sampling_rate_mic)
             st.success("Transcription Successfully Processed:")
             st.success(transcription)
 
