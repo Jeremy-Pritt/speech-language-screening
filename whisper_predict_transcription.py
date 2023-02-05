@@ -14,7 +14,7 @@ def whisper_predict_transcription(samples_array, sampling_rate):
 
     input_features = processor(samples_array, sampling_rate=sampling_rate, return_tensors="pt")
 
-    predicted_ids = model.generate(input_features)
+    predicted_ids = model.generate(inputs=input_features)
 
     transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
 
