@@ -2,6 +2,7 @@ import streamlit as st
 from st_custom_components import st_audiorec
 from process_audio import process_audio
 from whisper_predict_transcription import whisper_predict_transcription
+from convert_bytes_to_wav import convert_bytes_to_wav
 
 
 st.title("Speech-Language Screening")
@@ -43,11 +44,17 @@ with mic_recording_tab:
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
         submission_mic = st.form_submit_button("Submit and Run Screening")
         if submission_mic == True:
+
+            convert_bytes_to_wav(speech_sample_mic)
+            mic_input = "mic_input.wav"
             # logic goes here for processing speech sample
-            uploaded_file = "mic_file.wav"
+            samples_arry_mic, sampling_rate_mic = process_audio(mic_input)
             st.error("microphone functionality in progress")
             # logic goes here for processing speech sample
             # samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
             st.success(type(speech_sample_mic))
-            st.success(speech_sample_mic)
+            st.success(type(samples_arry_mic))
+            st.success(type(sampling_rate_mic))
+            st.success(samples_arry_mic)
+            st.success(sampling_rate_mic)
 
