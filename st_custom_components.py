@@ -27,7 +27,6 @@ def st_audiorec():
             raw_audio_data = np.array(raw_audio_data)  # convert to np array
             sorted_ints = raw_audio_data[ind]
             stream = io.BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-            # wav_bytes contains audio data in byte format, ready to be processed further
             wav_bytes = stream.read()
 
     return wav_bytes
