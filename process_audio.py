@@ -1,5 +1,3 @@
-import pydub
-import numpy as np
 import librosa
 
 
