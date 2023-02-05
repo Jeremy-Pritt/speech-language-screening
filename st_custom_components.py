@@ -3,7 +3,6 @@ import io
 import numpy as np
 import streamlit as st
 import streamlit.components.v1 as components
-import soundfile as sf
 
 def st_audiorec():
 
@@ -30,9 +29,8 @@ def st_audiorec():
             stream = io.BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
             # wav_bytes contains audio data in byte format, ready to be processed further
             wav_bytes = stream.read()
-            samples_arry, sr = sf.read(io.BytesIO(wav_bytes))
 
-    return samples_arry, sr
+    return wav_bytes
 
 
 
