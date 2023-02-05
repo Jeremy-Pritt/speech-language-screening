@@ -10,7 +10,7 @@ def whisper_predict_transcription(samples_array, sampling_rate):
     # load model and processor
     processor = WhisperProcessor.from_pretrained("openai/whisper-tiny")
     model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-tiny")
-    model.config.forced_decoder_ids = WhisperProcessor.get_decoder_prompt_ids(language="english", task="transcribe")
+    model.config.forced_decoder_ids = None
 
     input_features = processor(samples_array, sampling_rate, return_tensors="pt")
 
