@@ -49,3 +49,12 @@ with new_recording_tab:
         if submission_new == True:
             # logic goes here for processing speech sample
             st.error("microphone functionality in progress")
+            # logic goes here for processing speech sample
+            st.success(type(speech_sample_new))
+            samples_arry, sampling_rate = process_audio(speech_sample)
+            st.success(max(samples_arry))
+            st.success(sampling_rate)
+            st.success(samples_arry.shape)
+            st.success(len(samples_arry))
+            transcription = whisper_predict_transcription(samples_arry, sampling_rate)
+            st.success(transcription)
