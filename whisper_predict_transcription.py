@@ -6,16 +6,15 @@ def whisper_predict_transcription(samples_array, sampling_rate):
     pipe = pipeline(
         "automatic-speech-recognition",
         model="openai/whisper-tiny",
-        chunk_length_s=180,
+        chunk_length_s=30,
         device=device,
-        max_new_tokens=10000
     )
     sample = {}
     sample['array'] = samples_array
     sample['sampling_rate'] = sampling_rate
 
-    transcription = pipe(sample)["text"]
-    # transcription = pipe(sample, return_timestamps=True)["chunks"]
+    # transcription = pipe(sample)["text"]
+    transcription = pipe(sample, return_timestamps=True)["chunks"]
     return transcription
 
 
