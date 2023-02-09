@@ -11,10 +11,10 @@ def st_audiorec():
     # Custom REACT-based component for recording client audio in browser
     build_dir = os.path.join(parent_dir, "st_audiorec/frontend/build")
     # specify directory and initialize st_audiorec object functionality
-    st_audiorec = components.declare_component("st_audiorec", path=build_dir)
+    record_from_mic = components.declare_component("st_audiorec", path=build_dir)
 
     # Create an instance of the component: STREAMLIT AUDIO RECORDER
-    raw_audio_data = st_audiorec()  # raw_audio_data: stores all the data returned from the streamlit frontend
+    raw_audio_data = record_from_mic()  # raw_audio_data: stores all the data returned from the streamlit frontend
     wav_bytes = None                # wav_bytes: contains the recorded audio in .WAV format after conversion
 
     # the frontend returns raw audio data in the form of arraybuffer
@@ -31,3 +31,4 @@ def st_audiorec():
             wav_bytes = stream.read()
 
     return wav_bytes
+
