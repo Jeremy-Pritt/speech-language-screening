@@ -2,8 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Github Portfolio Projects/generate_database_script" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Github Portfolio Projects/predicting  income/predict-income" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Github Portfolio Projects/predicting  income/predict-income/portfolio" vcs="Git" />
   </component>
 </project>
