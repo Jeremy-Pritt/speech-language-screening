@@ -44,7 +44,7 @@ def split_csv_data(csv_file, num_splits, new_file_path):
         pandas_dfs[i].to_csv(new_file_path + "_split_" + str(i+1) + ".csv")
 
 
-csv_file = r"TalkBank Transcripts MetaData/language_disorders.csv"
-new_file_path = r"TalkBank Transcripts MetaData/language_disorders"
+csv_file = r"data/talkbank_transcripts_metadata/language_disorders.csv"
+new_file_path = r"data/talkbank_transcripts_metadata/language_disorders"
 split_csv_data(csv_file, 3, new_file_path)
 

@@ -75,4 +75,5 @@ def clean_webscrape_talkbank_transcription(csv_file_path, save_file_name):
     df.to_csv(save_file_name)
 
 # call
-clean_webscrape_talkbank_transcription(r"TalkBank Transcripts MetaData/language_disorders_split_2.csv", r"Clean TalkBank Data/language_disorders_scraped_split_2.csv")
+clean_webscrape_talkbank_transcription(r"data/talkbank_transcripts_metadata/language_disorders_split_2.csv",
+                                       r"data/raw_talkbank_data/language_disorders_scraped_split_2.csv")
