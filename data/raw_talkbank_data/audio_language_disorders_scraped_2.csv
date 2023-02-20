@@ -1,0 +1,83 @@
+,path_to_transcript,subject_id,language,sample_type,group_type,samples,sampling_rate
+415,childes/Clinical-MOR/EllisWeismer/TD/42ec/11057,11057,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00079002 -0.00071781
+  0.        ]",16000
+7,childes/Clinical-MOR/EllisWeismer/LT/30ec/11070,11070,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.0007241   0.00858255
+  0.        ]",16000
+129,childes/Clinical-MOR/EllisWeismer/LT/42ec/22125,22125,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00848726 -0.00942462
+  0.        ]",16000
+338,childes/Clinical-MOR/EllisWeismer/TD/30ec/22118,22118,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00421979 -0.00530542
+  0.        ]",16000
+199,childes/Clinical-MOR/EllisWeismer/LT/54ec/21117,21117,eng,toyplay,LT,"[0.000000e+00 0.000000e+00 0.000000e+00 ... 2.530810e-05 6.498615e-04
+ 0.000000e+00]",16000
+508,childes/Clinical-MOR/EllisWeismer/TD/54int/12003,12003,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.02252381 -0.02265623
+  0.        ]",16000
+267,childes/Clinical-MOR/EllisWeismer/LT/66conv/22086,22086,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00287132 -0.00411386
+  0.        ]",16000
+159,childes/Clinical-MOR/EllisWeismer/LT/42pc/12083,12083,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00192979 -0.00191775
+  0.        ]",16000
+556,childes/Clinical-MOR/EllisWeismer/TD/66conv/21092,21092,eng,toyplay,TD,[0.         0.         0.         ... 0.00103432 0.00097253 0.        ],16000
+395,childes/Clinical-MOR/EllisWeismer/TD/30pc/22089,22089,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00464873 -0.00142523
+  0.        ]",16000
+249,childes/Clinical-MOR/EllisWeismer/LT/66conv/11078,11078,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00114457 -0.00153176
+  0.        ]",16000
+182,childes/Clinical-MOR/EllisWeismer/LT/54ec/11070,11070,eng,toyplay,LT,[0.         0.         0.         ... 0.00400843 0.00392019 0.        ],16000
+300,childes/Clinical-MOR/EllisWeismer/TD/30ec/12008,12008,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00256503  0.00041521
+  0.        ]",16000
+286,childes/Clinical-MOR/EllisWeismer/TD/30ec/11027,11027,eng,toyplay,TD,[0.         0.         0.         ... 0.01048679 0.0197541  0.0360069 ],16000
+532,childes/Clinical-MOR/EllisWeismer/TD/54int/22128,22128,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00118867 -0.0016114
+  0.        ]",16000
+353,childes/Clinical-MOR/EllisWeismer/TD/30pc/11041,11041,eng,toyplay,TD,[0.         0.         0.         ... 0.01417722 0.01129653 0.        ],16000
+184,childes/Clinical-MOR/EllisWeismer/LT/54ec/12009,12009,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00040418 -0.0002824
+  0.        ]",16000
+386,childes/Clinical-MOR/EllisWeismer/TD/30pc/21099,21099,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00445154 -0.00521344
+  0.        ]",16000
+587,childes/Clinical-MOR/POLER/Match/163,163,eng,narrative,TD,[0. 0. 0. ... 0. 0. 0.],16000
+26,childes/Clinical-MOR/EllisWeismer/LT/30ec/21094,21094,eng,toyplay,LT,[0.         0.         0.         ... 0.00217237 0.0024929  0.        ],16000
+239,childes/Clinical-MOR/EllisWeismer/LT/54int/22164,22164,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00476109 -0.00479201
+ -0.00506161]",16000
+577,childes/Clinical-MOR/POLER/Match/128,128,eng,narrative,TD,"[-0.0185197  -0.05575811 -0.04290969 ... -0.01303248 -0.02156248
+  0.        ]",16000
+221,childes/Clinical-MOR/EllisWeismer/LT/54int/12036,12036,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00095178  0.00116827
+  0.        ]",16000
+85,childes/Clinical-MOR/EllisWeismer/LT/30pc/22125,22125,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00096456  0.00011203
+  0.        ]",16000
+273,childes/Clinical-MOR/EllisWeismer/LT/66conv/22161,22161,eng,toyplay,LT,[0.         0.         0.         ... 0.00280768 0.00312828 0.        ],16000
+512,childes/Clinical-MOR/EllisWeismer/TD/54int/12014,12014,eng,toyplay,TD,[0.         0.         0.         ... 0.00181515 0.0016897  0.        ],16000
+385,childes/Clinical-MOR/EllisWeismer/TD/30pc/21097,21097,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.01164844 -0.01329994
+  0.        ]",16000
+192,childes/Clinical-MOR/EllisWeismer/LT/54ec/12074,12074,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00066474 -0.00297169
+  0.        ]",16000
+266,childes/Clinical-MOR/EllisWeismer/LT/66conv/21165,21165,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00469085 -0.0052198
+  0.        ]",16000
+594,childes/Clinical-MOR/POLER/Match/173,173,eng,narrative,TD,"[-1.3166662e-04 -8.5593667e-05  1.4988462e-04 ...  0.0000000e+00
+  0.0000000e+00  0.0000000e+00]",16000
+20,childes/Clinical-MOR/EllisWeismer/LT/30ec/12079,12079,eng,toyplay,LT,[0.         0.         0.         ... 0.00052944 0.00030862 0.        ],16000
+487,childes/Clinical-MOR/EllisWeismer/TD/54ec/12014,12014,eng,toyplay,TD,"[ 0.          0.          0.         ...  0.00048174 -0.00127511
+  0.        ]",16000
+139,childes/Clinical-MOR/EllisWeismer/LT/42ec/22175,22175,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.01442875 -0.01796382
+ -0.02169419]",16000
+337,childes/Clinical-MOR/EllisWeismer/TD/30ec/22113,22113,eng,toyplay,TD,[0.         0.         0.         ... 0.00144374 0.0013013  0.        ],16000
+103,childes/Clinical-MOR/EllisWeismer/LT/42ec/11070,11070,eng,toyplay,LT,[0.         0.         0.         ... 0.00426337 0.00477489 0.        ],16000
+38,childes/Clinical-MOR/EllisWeismer/LT/30ec/22142,22142,eng,toyplay,LT,[0.         0.         0.         ... 0.00159992 0.00299943 0.        ],16000
+297,childes/Clinical-MOR/EllisWeismer/TD/30ec/12003,12003,eng,toyplay,TD,[0.         0.         0.         ... 0.00832094 0.01333195 0.        ],16000
+559,childes/Clinical-MOR/EllisWeismer/TD/66conv/21121,21121,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00991304  0.00669185
+  0.        ]",16000
+254,childes/Clinical-MOR/EllisWeismer/LT/66conv/12059,12059,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00671189 -0.00752594
+  0.        ]",16000
+232,childes/Clinical-MOR/EllisWeismer/LT/54int/21146,21146,eng,toyplay,LT,[0.         0.         0.         ... 0.00462409 0.00492238 0.        ],16000
+95,childes/Clinical-MOR/EllisWeismer/LT/30pc/22166,22166,eng,toyplay,LT,[0.         0.         0.         ... 0.00245608 0.00643884 0.        ],16000
+196,childes/Clinical-MOR/EllisWeismer/LT/54ec/12082,12082,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00210285 -0.01144446
+  0.        ]",16000
+408,childes/Clinical-MOR/EllisWeismer/TD/42ec/11006,11006,eng,toyplay,TD,[0.         0.         0.         ... 0.00253549 0.00359575 0.        ],16000
+565,childes/Clinical-MOR/EllisWeismer/TD/66conv/22103,22103,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00194273  0.00101529
+  0.        ]",16000
+197,childes/Clinical-MOR/EllisWeismer/LT/54ec/12083,12083,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00280024 -0.00319471
+  0.        ]",16000
+513,childes/Clinical-MOR/EllisWeismer/TD/54int/12015,12015,eng,toyplay,TD,[0.         0.         0.         ... 0.00234909 0.00287309 0.        ],16000
+488,childes/Clinical-MOR/EllisWeismer/TD/54ec/12015,12015,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00360227 -0.00356621
+ -0.00398205]",16000
+458,childes/Clinical-MOR/EllisWeismer/TD/42pc/12011,12011,eng,toyplay,TD,[0.         0.         0.         ... 0.02146745 0.02157708 0.        ],16000
+205,childes/Clinical-MOR/EllisWeismer/LT/54ec/22112,22112,eng,toyplay,LT,"[ 0.          0.          0.         ... -0.00179211 -0.00154104
+  0.        ]",16000
+563,childes/Clinical-MOR/EllisWeismer/TD/66conv/22093,22093,eng,toyplay,TD,"[ 0.          0.          0.         ... -0.00171645 -0.00191425
+  0.        ]",16000
