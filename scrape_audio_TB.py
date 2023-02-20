@@ -31,7 +31,7 @@ def get_TB_audio(csv_file_path, save_file_name):
     df = pd.read_csv(csv_file_path, delim_whitespace=True,
                      header=None)
 
-    df = df.sample(frac=1, random_state=55).iloc[100:200, :]
+    df = df.sample(frac=1, random_state=55).iloc[500:700, :]
 
     # remove unimportant columns from the df
 
@@ -70,4 +70,4 @@ def get_TB_audio(csv_file_path, save_file_name):
 
 # call
 get_TB_audio(r"data/talkbank_transcripts_metadata/audio_langdisorders_metadata.csv",
-             r"data/raw_talkbank_data/audio_language_disorders_scraped_3.csv")
+             r"data/raw_talkbank_data/audio_language_disorders_scraped_6.csv")
