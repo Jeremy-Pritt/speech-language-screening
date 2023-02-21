@@ -24,13 +24,13 @@ with pre_recorded_tab:
         age_month = st.selectbox(label="Months:", options=(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
         child_first_speaker = st.selectbox(label="Who is the first speaker in the recording?", options=(
-            "The Child", "The Prompter (parent or SLP)"))
+            "The child", "The prompter (ie parent or SLP)"))
         submission = st.form_submit_button("Submit and Run Screening")
 
         if submission == True:
 
             # child_first_speaker logic
-            if child_first_speaker == "The Child":
+            if child_first_speaker == "The child":
                 child_first = True
             else:
                 child_first = False
@@ -70,7 +70,7 @@ with mic_recording_tab:
             mic_input = convert_bytes_to_wav(speech_sample_mic)
 
             # child_first_speaker logic
-            if child_first_speaker_mic == "The Child":
+            if child_first_speaker_mic == "The child":
                 child_first_mic = True
             else:
                 child_first_mic = False
