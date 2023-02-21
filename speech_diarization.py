@@ -6,7 +6,7 @@ from pydub import AudioSegment
 import streamlit as st
 
 
-@st.cache_resource
+# @st.cache_resource
 def load_pipeline():
     return Pipeline.from_pretrained(
         'pyannote/speaker-diarization@2.1', use_auth_token="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")
