@@ -40,10 +40,6 @@ def speech_diarization(uploaded_file):
     with open("temp_diarization.txt", "w") as text_file:
         text_file.write(str(diarization))
 
-    print("List:")
-    print(*list(diarization.itertracks(yield_label=True)), sep="\n")
-    print("")
-
     dz = open('temp_diarization.txt').read().splitlines()
     dzList = []
     for l in dz:
