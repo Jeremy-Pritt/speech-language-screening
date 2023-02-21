@@ -3,7 +3,7 @@ from transformers import pipeline
 import streamlit as st
 
 
-# @st.cache_resource
+@st.cache_resource
 def load_pipeline():
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     return pipeline(

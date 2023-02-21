@@ -1,12 +1,11 @@
 from pyannote.audio import Pipeline
 from mp3_to_wav import mp3_to_wav
-import torchaudio
 import re
 from pydub import AudioSegment
 import streamlit as st
 
 
-# @st.cache_resource
+@st.cache_resource
 def load_pipeline():
     return Pipeline.from_pretrained(
         'pyannote/speaker-diarization@2.1', use_auth_token="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")
@@ -21,8 +20,6 @@ def sec(timeStr):
 
 
 def speech_diarization(uploaded_file):
-    torchaudio.set_audio_backend("soundfile")
-
     # import the pretrained diarization model
     pipeline = load_pipeline()
 
@@ -32,7 +29,7 @@ def speech_diarization(uploaded_file):
     # trim the audio to a given time constraint
     audio = AudioSegment.from_wav(wav_file)
     start_time = 0  # start at the beginning
-    end_time = 1 * 60 * 1000  # end after 1 minute (in milliseconds)
+    end_time = 15 * 1000  # end after 15 seconds (in milliseconds)
     trimmed_audio = audio[start_time:end_time]
     trimmed_audio.export("temp_trimmed_file.wav", format="wav")
 
