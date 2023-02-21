@@ -3,6 +3,8 @@ from st_custom_components import st_audiorec
 from process_audio import process_audio
 from whisper_predict_transcription import whisper_predict_transcription
 from convert_bytes_to_wav import convert_bytes_to_wav
+from speech_diarization import speech_diarization
+from get_child_speech import get_child_speech
 
 
 st.title("Speech-Language Screening")
@@ -21,16 +23,35 @@ with pre_recorded_tab:
             "4", "5", "6", "7", "8", "9", "10", "11"))
         age_month = st.selectbox(label="Months:", options=(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+        child_first_speaker = st.selectbox(label="Who is the first speaker in the recording?", options=(
+            "The Child", "The Prompter (parent or SLP)"))
         submission = st.form_submit_button("Submit and Run Screening")
+
         if submission == True:
-            # logic goes here for processing speech sample
-            samples_arry, sampling_rate = process_audio(speech_sample)
+
+            # child_first_speaker logic
+            if child_first_speaker == "The Child":
+                child_first = True
+            else:
+                child_first = False
+
+            # logic for speech diarization
+            with st.spinner("Isolating child's speech..."):
+                dzList, trimmed_audio = speech_diarization(speech_sample)
+                child_speech_sample = get_child_speech(dzList, trimmed_audio,
+                                                       first_speaker_is_child=child_first)
+                st.success("Successfully separated out child's speech")
+
+            # logic goes here for transcribing speech
+            with st.spinner("Processing speech..."):
+                samples_arry, sampling_rate = process_audio(
+                    child_speech_sample)
             st.success("Speech Sample Successfully Processed")
-            transcription = whisper_predict_transcription(samples_arry, sampling_rate)
+            with st.spinner("Building transcription..."):
+                transcription = whisper_predict_transcription(
+                    samples_arry, sampling_rate)
             st.success("Transcription Successfully Processed:")
             st.success(transcription)
-
-
 
 
 with mic_recording_tab:
@@ -42,13 +63,32 @@ with mic_recording_tab:
             "4", "5", "6", "7", "8", "9", "10", "11"))
         age_month_mic = st.selectbox(label="Months:", options=(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+        child_first_speaker_mic = st.selectbox(label="Who is the first speaker in the recording?", options=(
+            "The child", "The prompter (ie parent or SLP)"))
         submission_mic = st.form_submit_button("Submit and Run Screening")
         if submission_mic == True:
             mic_input = convert_bytes_to_wav(speech_sample_mic)
-            samples_arry_mic, sampling_rate_mic = process_audio(mic_input)
-            # samples_arry_mic, sampling_rate_mic = process_audio(uploaded_file)
-            st.success("Speech Sample Successfully Processed")
-            transcription = whisper_predict_transcription(samples_arry_mic, sampling_rate_mic)
-            st.success("Transcription Successfully Processed:")
-            st.success(transcription)
 
+            # child_first_speaker logic
+            if child_first_speaker_mic == "The Child":
+                child_first_mic = True
+            else:
+                child_first_mic = False
+
+            # logic for speech diarization
+            with st.spinner("Isolating child's speech..."):
+                dzList_mic, trimmed_audio_mic = speech_diarization(mic_input)
+                child_speech_sample_mic = get_child_speech(dzList_mic, trimmed_audio_mic,
+                                                           first_speaker_is_child=child_first_mic)
+            st.success("Successfully separated out child's speech")
+
+            # logic for transcribing speech
+            with st.spinner("Processing speech..."):
+                samples_arry_mic, sampling_rate_mic = process_audio(
+                    child_speech_sample_mic)
+            st.success("Speech Sample Successfully Processed")
+            with st.spinner("Building transcription..."):
+                transcription_mic = whisper_predict_transcription(
+                    samples_arry_mic, sampling_rate_mic)
+            st.success("Transcription Successfully Processed:")
+            st.success(transcription_mic)
