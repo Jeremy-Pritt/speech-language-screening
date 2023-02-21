@@ -16,7 +16,7 @@ def process_audio_webscrape(uploaded_file):
             samples_arry = np.array(x)
             return samples_arry, sr
         elif uploaded_file.endswith('mp3'):
-            output_file = 'result.wav'
+            output_file = 'temp_result.wav'
             sound = AudioSegment.from_mp3(uploaded_file)
             sound.export(output_file, format="wav")
             x, sr = librosa.load(output_file, sr=16000)
