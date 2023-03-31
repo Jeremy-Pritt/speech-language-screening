@@ -5,6 +5,9 @@ from whisper_predict_transcription import whisper_predict_transcription
 from convert_bytes_to_wav import convert_bytes_to_wav
 from speech_diarization import speech_diarization
 from get_child_speech import get_child_speech
+from data_processing_function import process_children_data
+from s3fs import S3FileSystem
+import pickle
 
 
 st.title("Speech-Language Screening")
@@ -52,6 +55,19 @@ with pre_recorded_tab:
                     samples_arry, sampling_rate)
             st.success("Transcription Successfully Processed:")
             st.success(transcription)
+            
+            # add logic for making final prediction using RF model
+            df = process_children_data(transcription) # 
+            fs = S3FileSystem() # read in from file
+            
+            
+            model = pickle.load(fs.open('path/goes/here')) # TODO: we have to encrypt credentials
+            
+            # select appropriate columns
+            model.predict_proba(df)
+            
+            
+            
 
 
 with mic_recording_tab:
@@ -92,3 +108,6 @@ with mic_recording_tab:
                     samples_arry_mic, sampling_rate_mic)
             st.success("Transcription Successfully Processed:")
             st.success(transcription_mic)
+            
+            # add logic for making final prediction using RF model
+
