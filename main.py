@@ -8,7 +8,7 @@ from get_child_speech import get_child_speech
 from data_processing_function import process_children_data
 from s3fs import S3FileSystem
 import pickle
-
+import json
 
 st.title("Speech-Language Screening")
 
@@ -55,19 +55,23 @@ with pre_recorded_tab:
                     samples_arry, sampling_rate)
             st.success("Transcription Successfully Processed:")
             st.success(transcription)
-            
+
             # add logic for making final prediction using RF model
-            df = process_children_data(transcription) # 
-            fs = S3FileSystem() # read in from file
-            
-            
-            model = pickle.load(fs.open('path/goes/here')) # TODO: we have to encrypt credentials
-            
-            # select appropriate columns
-            model.predict_proba(df)
-            
-            
-            
+            df = process_children_data(transcription)
+
+            # get access to s3 bucket
+            creds = json.load(open('creds.json', 'r'))
+            fs = S3FileSystem(key=creds['id'], secret=creds['secret'])
+            MODEL_PATH = "speech-disorder-screening/models/rf_model.pickle"
+
+            with fs.open(MODEL_PATH, 'rb') as f:
+                model = pickle.load(f)
+                prediction = model.predict(df)
+                if prediction[0] == 'LT':
+                    st.success("Result: Your child did NOT pass the screening and may be at risk for a language disorder. It is recommended that a speech-therapist evaluate your child to determine whether a language disorder is present.")
+                else:
+                    st.success(
+                        "Result: Your child passed the screening. The screening did not detect that your child is at risk for a language disorder.")
 
 
 with mic_recording_tab:
@@ -108,6 +112,20 @@ with mic_recording_tab:
                     samples_arry_mic, sampling_rate_mic)
             st.success("Transcription Successfully Processed:")
             st.success(transcription_mic)
-            
-            # add logic for making final prediction using RF model
 
+            # add logic for making final prediction using RF model
+            df_mic = process_children_data(transcription)
+
+            # get access to s3 bucket
+            creds = json.load(open('creds.json', 'r'))
+            fs = S3FileSystem(key=creds['id'], secret=creds['secret'])
+            MODEL_PATH = "speech-disorder-screening/models/rf_model.pickle"
+
+            with fs.open(MODEL_PATH, 'rb') as f:
+                model_mic = pickle.load(f)
+                prediction_mic = model_mic.predict(df_mic)
+                if prediction_mic[0] == 'LT':
+                    st.success("Result: Your child did NOT pass the screening and may be at risk for a language disorder. It is recommended that a speech-therapist evaluate your child to determine whether a language disorder is present.")
+                else:
+                    st.success(
+                        "Result: Your child passed the screening. The screening did not detect that your child is at risk for a language disorder.")
