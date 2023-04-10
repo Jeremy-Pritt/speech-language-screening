@@ -6,7 +6,7 @@ from convert_bytes_to_wav import convert_bytes_to_wav
 from speech_diarization import speech_diarization
 from get_child_speech import get_child_speech
 from data_processing_function import process_children_data
-from s3fs import S3FileSystem
+import boto3
 import pickle
 import json
 
@@ -60,11 +60,20 @@ with pre_recorded_tab:
             df = process_children_data(transcription)
 
             # get access to s3 bucket
-            creds = json.load(open('creds.json', 'r'))
-            fs = S3FileSystem(key=creds['id'], secret=creds['secret'])
-            MODEL_PATH = "speech-disorder-screening/models/rf_model.pickle"
 
-            with fs.open(MODEL_PATH, 'rb') as f:
+            # create an S3 client
+            s3 = boto3.client('s3')
+
+            # specify the bucket and object key
+            bucket_name = 'speech-disorder-screening-public'
+            object_key = 'models/rf_model.pickle'
+
+            # download the pickle file to a local file object
+            with open('local-file.pickle', 'wb') as f:
+                s3.download_fileobj(bucket_name, object_key, f)
+
+            # load the object from the pickle file
+            with open('local-file.pickle', 'rb') as f:
                 model = pickle.load(f)
                 prediction = model.predict(df)
                 if prediction[0] == 'LT':
@@ -117,13 +126,22 @@ with mic_recording_tab:
             df_mic = process_children_data(transcription)
 
             # get access to s3 bucket
-            creds = json.load(open('creds.json', 'r'))
-            fs = S3FileSystem(key=creds['id'], secret=creds['secret'])
-            MODEL_PATH = "speech-disorder-screening/models/rf_model.pickle"
 
-            with fs.open(MODEL_PATH, 'rb') as f:
+            # create an S3 client
+            s3 = boto3.client('s3')
+
+            # specify the bucket and object key
+            bucket_name = 'speech-disorder-screening-public'
+            object_key = 'models/rf_model.pickle'
+
+            # download the pickle file to a local file object
+            with open('local-file.pickle', 'wb') as f:
+                s3.download_fileobj(bucket_name, object_key, f)
+
+            # load the object from the pickle file
+            with open('local-file.pickle', 'rb') as f:
                 model_mic = pickle.load(f)
-                prediction_mic = model_mic.predict(df_mic)
+                prediction_mic = model_mic.predict(df)
                 if prediction_mic[0] == 'LT':
                     st.success("Result: Your child did NOT pass the screening and may be at risk for a language disorder. It is recommended that a speech-therapist evaluate your child to determine whether a language disorder is present.")
                 else:
