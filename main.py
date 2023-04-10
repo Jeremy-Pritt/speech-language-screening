@@ -6,9 +6,8 @@ from convert_bytes_to_wav import convert_bytes_to_wav
 from speech_diarization import speech_diarization
 from get_child_speech import get_child_speech
 from data_processing_function import process_children_data
-import boto3
 import pickle
-import json
+import urllib.request
 
 st.title("Speech-Language Screening")
 
@@ -59,21 +58,14 @@ with pre_recorded_tab:
             # add logic for making final prediction using RF model
             df = process_children_data(transcription)
 
-            # get access to s3 bucket
+            # Set the URL of the public S3 bucket object
+            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
 
-            # create an S3 client
-            s3 = boto3.client('s3')
+            # Download the object
+            urllib.request.urlretrieve(url, 'rf_model.pickle')
 
-            # specify the bucket and object key
-            bucket_name = 'speech-disorder-screening-public'
-            object_key = 'models/rf_model.pickle'
-
-            # download the pickle file to a local file object
-            with open('local-file.pickle', 'wb') as f:
-                s3.download_fileobj(bucket_name, object_key, f)
-
-            # load the object from the pickle file
-            with open('local-file.pickle', 'rb') as f:
+            # Load the pickle object from the file
+            with open('rf_model.pickle', 'rb') as f:
                 model = pickle.load(f)
                 prediction = model.predict(df)
                 if prediction[0] == 'LT':
@@ -125,21 +117,14 @@ with mic_recording_tab:
             # add logic for making final prediction using RF model
             df_mic = process_children_data(transcription)
 
-            # get access to s3 bucket
+            # Set the URL of the public S3 bucket object
+            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
 
-            # create an S3 client
-            s3 = boto3.client('s3')
+            # Download the object
+            urllib.request.urlretrieve(url, 'rf_model.pickle')
 
-            # specify the bucket and object key
-            bucket_name = 'speech-disorder-screening-public'
-            object_key = 'models/rf_model.pickle'
-
-            # download the pickle file to a local file object
-            with open('local-file.pickle', 'wb') as f:
-                s3.download_fileobj(bucket_name, object_key, f)
-
-            # load the object from the pickle file
-            with open('local-file.pickle', 'rb') as f:
+            # Load the pickle object from the file
+            with open('rf_model.pickle', 'rb') as f:
                 model_mic = pickle.load(f)
                 prediction_mic = model_mic.predict(df)
                 if prediction_mic[0] == 'LT':
