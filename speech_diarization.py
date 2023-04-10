@@ -29,8 +29,8 @@ def speech_diarization(uploaded_file):
     # trim the audio to a given time constraint
     audio = AudioSegment.from_wav(wav_file)
     start_time = 0  # start at the beginning
-    # end after 1 minute (in milliseconds) (now changed to 3 seconds)
-    end_time = 3 * 1000
+    # end after 1 minute (in milliseconds) (now changed to 15 seconds)
+    end_time = 15 * 1000
     trimmed_audio = audio[start_time:end_time]
     trimmed_audio.export("temp_trimmed_file.wav", format="wav")
 
