@@ -115,18 +115,19 @@ with mic_recording_tab:
             st.success(transcription_mic)
 
             # add logic for making final prediction using RF model
-            df_mic = process_children_data(transcription)
+            df_mic = process_children_data(transcription_mic)
 
             # Set the URL of the public S3 bucket object
-            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
+            # url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
 
             # Download the object
-            urllib.request.urlretrieve(url, 'rf_model.pickle')
+            # urllib.request.urlretrieve(url, 'rf_model.pickle')
 
             # Load the pickle object from the file
-            with open('rf_model.pickle', 'rb') as f:
+            with open('rf_model1.pickle', 'rb') as f:
                 model_mic = pickle.load(f)
-                prediction_mic = model_mic.predict(df)
+                prediction_mic = model_mic.predict(df_mic)
+                st.success(str(prediction_mic))
                 if prediction_mic[0] == 'LT':
                     st.success("Result: Your child did NOT pass the screening and may be at risk for a language disorder. It is recommended that a speech-therapist evaluate your child to determine whether a language disorder is present.")
                 else:

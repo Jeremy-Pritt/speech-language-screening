@@ -1,26 +1,50 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
-import numpy as np
+import json
 
-  #open csv as dataframe
-df = pd.read_csv('language_disorders_split_1.csv')
-df  
-df.describe()
-#the input data (x, regressor)
-x = np.array(df["0"]).reshape(-1,1)
-x.shape
-print(x)
-#Lets try to find the output data (y, predictor)
-y = np.array(df["6"])
-y
-y.shape
-print(y)
-print(type(y))
-#split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=99)
-#Exploring the train and test datasets
-X_train.shape
-X_test.shape
-y.shape
-print(y_train.shape)
-print(y_test.shape)
+import pandas as pd
+import s3fs
+from sklearn.model_selection import train_test_split
+
+from data_processing_function import process_children_data
+
+LT = 'speech-disorder-screening/transcripts/whisper/LT'
+TD = 'speech-disorder-screening/transcripts/whisper/TD'
+
+creds = json.load(open('aws_creds.txt', 'r'))
+fs = s3fs.S3FileSystem(username=creds['id'], password=creds['secret'])
+
+# CAREFUL; AS OF WRITING THIS COMMENT, THE COLUMNS ARE MISALIGNED FOR AGE AND SEX
+# metadata = pd.read_csv('language_disorders.csv')
+# metadata['subpath'] = metadata['path_to_transcript'].apply(lambda s: s.replace('/', '-') + '.json')
+
+data = {
+    'raw': [],
+    'numberofutterance': [],
+    'avgWordsPerUtterance': [],
+    # 'age': [],
+    'target': []
+}
+
+for path in [LT, TD]:
+    for filename in fs.ls(path):
+        raw = fs.open(filename, mode='r').read()
+        if raw:
+            transcript = json.loads(raw)['transcription']
+        else:
+            continue
+        # Select the part of the file that matches the subpath in the CSV file
+        subpath = filename.split('/')[-1]
+
+        data['raw'].append(' '.join([utterance['text'] for utterance in transcript]))
+
+        mini_df = process_children_data(transcript)
+        data['numberofutterance'].append(mini_df.iloc[0, 0])
+        data['avgWordsPerUtterance'].append(mini_df.iloc[0, 1])
+
+        # data['age'].append(metadata.query('subpath == @subpath')['age'].iloc[0])
+        data['target'].append('LT' if path == LT else 'TD')
+
+df = pd.DataFrame(data)
+train, test = train_test_split(df, test_size=0.3, random_state=10, stratify=df['target'])
+
+train.to_csv('training_set.csv')
+test.to_csv('test_set.csv')
