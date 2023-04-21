@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 
+# transciption = [
+#     {'text1': 'I said something', 'timestamps': (0.0, 2.0)},
+#     {'text2': 'I said something', 'timestamps': (0.0, 2.0)},
+# ]
 
 def process_children_data(transcription):
     transcription_str = ""
