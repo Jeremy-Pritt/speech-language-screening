@@ -89,6 +89,8 @@ with pre_recorded_tab:
                 else:
                     st.success(
                         "Result: Your child passed the screening. The screening did not detect that your child is at risk for a language disorder.")
+                st.success(
+                    f"Your child's average length of utterance was {df['words_per_utterance'].iloc[0]:.2f}.")
 
 
 with mic_recording_tab:
@@ -164,3 +166,5 @@ with mic_recording_tab:
                 else:
                     st.success(
                         "Result: Your child passed the screening. The screening did not detect that your child is at risk for a language disorder.")
+                st.success(
+                    f"Your child's average length of utterance was {df_mic['words_per_utterance'].iloc[0]:.2f}.")
