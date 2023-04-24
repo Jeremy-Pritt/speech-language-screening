@@ -14,6 +14,7 @@ creds = pd.read_csv('creds.csv')
 fs = s3fs.FileSystem(user=creds['id'], password=creds['secret'])
 
 ### with s3fs
+### Change the name here or you will get an error
 with fs.open('/bucket-name/subfolder/file.txt', 'w') as f:
     f.write('some text')
     

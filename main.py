@@ -157,7 +157,8 @@ with mic_recording_tab:
             # Load the pickle object from the file
             with open('final_rf.pickle', 'rb') as f:
                 model_mic = pickle.load(f)
-                prediction_mic = model_mic.predict(df)
+                prediction_mic = model_mic.predict(df_mic)
+                st.success(str(prediction_mic))
                 if prediction_mic[0] == 'LT':
                     st.success("Result: Your child did NOT pass the screening and may be at risk for a language disorder. It is recommended that a speech-therapist evaluate your child to determine whether a language disorder is present.")
                 else:
