@@ -22,7 +22,7 @@ def process_children_data(transcription):
     words_in_each_utterance = np.mean([len(i.split(" ")) for i in splits])
 
     df = pd.DataFrame([[number_of_utterance, words_in_each_utterance]], columns=[
-                      "numberofutterance", "avgWordsPerUtterance"])
+                      "utterances", "words_per_utterance"])
 
     return df
 

@@ -21,15 +21,26 @@ with pre_recorded_tab:
         speech_sample = st.file_uploader(
             "Please upload an audio file of your child\'s speech:", type=['wav', 'mp3'], accept_multiple_files=False)
         st.write("Please enter your child's age:")
-        age_year = st.selectbox(label="Years:", options=(
-            "4", "5", "6", "7", "8", "9", "10", "11"))
+        age_year = st.selectbox(label="Years:", options=("1", "2", "3",
+                                                         "4", "5", "6", "7", "8", "9", "10", "11"))
         age_month = st.selectbox(label="Months:", options=(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+
+        gender = st.selectbox(label='Gender:', options=('Male', 'Female'))
+
         child_first_speaker = st.selectbox(label="Who is the first speaker in the recording?", options=(
             "The child", "The prompter (ie parent or SLP)"))
         submission = st.form_submit_button("Submit and Run Screening")
 
         if submission == True:
+
+            age_year = int(age_year)
+            age_month = int(age_month)
+
+            if gender == "Male":
+                gender = 1
+            else:
+                gender = 0
 
             # child_first_speaker logic
             if child_first_speaker == "The child":
@@ -57,15 +68,20 @@ with pre_recorded_tab:
 
             # add logic for making final prediction using RF model
             df = process_children_data(transcription)
+            df['years_old'] = age_year
+            df['months_old'] = age_month
+            df['sex'] = gender
+            df = df.reindex(columns=[
+                            'utterances', 'words_per_utterance', 'sex', 'years_old', 'months_old'])
 
             # Set the URL of the public S3 bucket object
-            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
+            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/final_rf.pkl'
 
             # Download the object
-            urllib.request.urlretrieve(url, 'rf_model.pickle')
+            urllib.request.urlretrieve(url, 'final_rf.pickle')
 
             # Load the pickle object from the file
-            with open('rf_model.pickle', 'rb') as f:
+            with open('final_rf.pickle', 'rb') as f:
                 model = pickle.load(f)
                 prediction = model.predict(df)
                 if prediction[0] == 'LT':
@@ -84,11 +100,21 @@ with mic_recording_tab:
             "4", "5", "6", "7", "8", "9", "10", "11"))
         age_month_mic = st.selectbox(label="Months:", options=(
             "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"))
+        gender_mic = st.selectbox(label='Gender:', options=('Male', 'Female'))
+
         child_first_speaker_mic = st.selectbox(label="Who is the first speaker in the recording?", options=(
             "The child", "The prompter (ie parent or SLP)"))
         submission_mic = st.form_submit_button("Submit and Run Screening")
         if submission_mic == True:
             mic_input = convert_bytes_to_wav(speech_sample_mic)
+
+            age_year_mic = int(age_year_mic)
+            age_month_mic = int(age_month_mic)
+
+            if gender_mic == "Male":
+                gender_mic = 1
+            else:
+                gender_mic = 0
 
             # child_first_speaker logic
             if child_first_speaker_mic == "The child":
@@ -116,15 +142,20 @@ with mic_recording_tab:
 
             # add logic for making final prediction using RF model
             df_mic = process_children_data(transcription)
+            df_mic['years_old'] = age_year_mic
+            df_mic['months_old'] = age_month_mic
+            df_mic['sex'] = gender_mic
+            df_mic = df_mic.reindex(columns=[
+                                    'utterances', 'words_per_utterance', 'sex', 'years_old', 'months_old'])
 
             # Set the URL of the public S3 bucket object
-            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/rf_model.pickle'
+            url = 'https://speech-disorder-screening-public.s3.us-west-1.amazonaws.com/models/final_rf.pkl'
 
             # Download the object
-            urllib.request.urlretrieve(url, 'rf_model.pickle')
+            urllib.request.urlretrieve(url, 'final_rf.pickle')
 
             # Load the pickle object from the file
-            with open('rf_model.pickle', 'rb') as f:
+            with open('final_rf.pickle', 'rb') as f:
                 model_mic = pickle.load(f)
                 prediction_mic = model_mic.predict(df)
                 if prediction_mic[0] == 'LT':
